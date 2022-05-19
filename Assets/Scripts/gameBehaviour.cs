@@ -15,8 +15,12 @@ public class gameBehaviour : MonoBehaviour
     public Material skybox3;
     public Text bagScoreText;
     public GameObject endScreen;
+    public GameObject failScreen;
     public GameObject torba1;
     public GameObject torba2;
+    public GameObject cam1;
+    public GameObject cam2;
+    public GameObject cam3;
 
     private void Start()
     {
@@ -108,5 +112,31 @@ public class gameBehaviour : MonoBehaviour
     {
         endScreen.SetActive(true);
         pauseGame();
+    }
+    public void showFailScreen()
+    {
+        failScreen.SetActive(true);
+        pauseGame();
+    }
+    public void changeCamera(int i)
+    {
+        if (i == 1)
+        {
+            cam1.SetActive(true);
+            cam2.SetActive(false);
+            cam3.SetActive(false);
+        }
+        else if (i == 2)
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(true);
+            cam3.SetActive(false);
+        }
+        else if (i == 3)
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(false);
+            cam3.SetActive(true);
+        }
     }
 }

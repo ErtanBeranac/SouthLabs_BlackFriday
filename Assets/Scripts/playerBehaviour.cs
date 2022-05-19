@@ -117,15 +117,20 @@ public class playerBehaviour : MonoBehaviour
         playerSpeed = 0f;
         controllOff = true;
         animator.Play("WallHit");
-        StartCoroutine(waitTime(cooldownTime));
+        StartCoroutine(waitTime(cooldownTime,false));
         //
     }
 
-    private IEnumerator waitTime(float cooldownTime)
+    private IEnumerator waitTime(float cooldownTime, bool end)
     {
         
         yield return new WaitForSeconds(cooldownTime);
-        gameBeh.showEndScreen();
+        if (end)
+        {
+            gameBeh.showEndScreen();
+        }
+        else { gameBeh.showFailScreen(); }
+        
     }
     public void endOfLevel()
     {
@@ -176,7 +181,7 @@ public class playerBehaviour : MonoBehaviour
                 playerSpeed = 0f;
                 controllOff = true;
                 animator.Play("Defeat");
-                StartCoroutine(waitTime(cooldownTime));
+                StartCoroutine(waitTime(cooldownTime,false));
             }
         }
         if(other.gameObject.tag == "Victory")
@@ -184,7 +189,7 @@ public class playerBehaviour : MonoBehaviour
             playerSpeed = 0f;
             controllOff = true;
             animator.Play("Victory");
-            StartCoroutine(waitTime(cooldownTime));
+            StartCoroutine(waitTime(cooldownTime,true));
 
         }
     }
