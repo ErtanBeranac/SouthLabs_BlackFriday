@@ -1,2 +1,2 @@
-# HireUs
+# SouthLabs_BlackFriday
 CrazyLabs Assessment 
